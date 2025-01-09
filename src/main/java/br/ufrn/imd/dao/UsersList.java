@@ -4,11 +4,11 @@ import br.ufrn.imd.model.User;
 
 import java.util.ArrayList;
 
-public class UserControl {
+public class UsersList {
 
     private ArrayList<User> users;
 
-    public UserControl() {
+    public UsersList() {
         this.users = new ArrayList<>();
     }
 
