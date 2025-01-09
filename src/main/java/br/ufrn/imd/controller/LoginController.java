@@ -5,9 +5,15 @@ import br.ufrn.imd.dao.UsersList;
 import br.ufrn.imd.model.User;
 import br.ufrn.imd.view.MenuApplication;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class LoginController {
 
@@ -41,6 +47,16 @@ public class LoginController {
                 }
             }
             MenuApplication.setActiveUser(user);
+
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            stage.close();
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/br/ufrn/imd/view/MainMenu.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage mainMenuStage = new Stage();
+            mainMenuStage.setTitle("Main Menu");
+            mainMenuStage.setScene(new Scene(root));
+            mainMenuStage.show();
         } catch (UserException e) {
             System.out.println("User not authenticated: " + e.getMessage());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -52,6 +68,8 @@ public class LoginController {
                 alert.setContentText("Incorrect password, please try again");
             }
             alert.showAndWait();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
         System.out.println("Username: " + username + ", Password: " + password);
     }

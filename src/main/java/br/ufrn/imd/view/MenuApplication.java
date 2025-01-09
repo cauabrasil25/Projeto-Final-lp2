@@ -15,7 +15,7 @@ import java.io.IOException;
 public class MenuApplication extends Application {
 
     private static UsersList usersList = new UsersList();
-    private static User activeUser;
+    private static User activeUser = new User();
 
     @Override
     public void start(Stage stage) throws IOException {
