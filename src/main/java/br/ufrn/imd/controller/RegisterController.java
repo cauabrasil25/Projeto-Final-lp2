@@ -9,7 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class LoginController {
+public class RegisterController {
 
     @FXML
     private TextField usernameField;
@@ -33,27 +33,23 @@ public class LoginController {
         String password = passwordField.getText();
         try {
             User user = authenticated(username, password);
-            System.out.println("User authenticated: " + user.getUsername());
-            for (User u : usersList.getUsers()) {
-                if (u.getUsername().equals(username)) {
-                    user.setMaxScore(u.getMaxScore());
-                    break;
-                }
-            }
-            MenuApplication.setActiveUser(user);
+            System.out.println("User already registered" + user.getUsername());
         } catch (UserException e) {
-            System.out.println("User not authenticated: " + e.getMessage());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Login");
             alert.setHeaderText(null);
             if (e.getMessage().equals("User not found")) {
-                alert.setContentText("User not found, please register");
+                User user = new User();
+                user.setUsername(username);
+                user.setPassword(password);
+                usersList.addUser(user);
+                MenuApplication.getUsersList().addUser(user);
+                alert.setContentText("User registered, please login");
             } else if (e.getMessage().equals("Incorrect password")) {
-                alert.setContentText("Incorrect password, please try again");
+                alert.setContentText("User already registered");
             }
             alert.showAndWait();
         }
         System.out.println("Username: " + username + ", Password: " + password);
     }
-
 }

@@ -1,5 +1,7 @@
 package br.ufrn.imd.controller;
 
+import br.ufrn.imd.model.DataSave;
+import br.ufrn.imd.view.MenuApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,15 +16,19 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MenuController {
+public class WelcomeController {
 
-    private static final Logger LOGGER = Logger.getLogger(MenuController.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(WelcomeController.class.getName());
 
     @FXML
     private void onLoginButtonClick() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/br/ufrn/imd/view/Login.fxml"));
             Parent root = fxmlLoader.load();
+
+            LoginController loginController = fxmlLoader.getController();
+            loginController.setUsersList(MenuApplication.getUsersList());
+
             Stage stage = new Stage();
             stage.setTitle("Login");
             stage.setScene(new Scene(root));
@@ -34,7 +40,20 @@ public class MenuController {
 
     @FXML
     private void onRegisterButtonClick() {
-        showAlert("Register", "Register button clicked");
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/br/ufrn/imd/view/Register.fxml"));
+            Parent root = fxmlLoader.load();
+
+            RegisterController registerController = fxmlLoader.getController();
+            registerController.setUsersList(MenuApplication.getUsersList());
+
+            Stage stage = new Stage();
+            stage.setTitle("Register");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Error loading Login.fxml", e);
+        }
     }
 
     @FXML
@@ -46,6 +65,8 @@ public class MenuController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
+            DataSave dataSave = new DataSave();
+            dataSave.saveJsonFile(MenuApplication.getUsersList());
             System.exit(0);
         }
     }

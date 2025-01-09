@@ -7,7 +7,7 @@ public class Data implements DataI {
     protected String jsonFile;
 
     public Data() {
-        this.jsonFile = "../../../../../Users.json";
+        this.jsonFile = "Users.json";
     }
 
     public void setJsonFile(String jsonFile) {

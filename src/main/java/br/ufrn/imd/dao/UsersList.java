@@ -34,9 +34,9 @@ public class UsersList {
                     user.setMaxScore(u.getMaxScore());
                     return user;
                 }
-                throw new UserException("Wrong Password");
+                throw new UserException("Incorrect password");
             }
         }
-        throw new UserException("User Not found");
+        throw new UserException("User not found");
     }
 }
