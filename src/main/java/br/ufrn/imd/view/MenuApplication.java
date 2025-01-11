@@ -51,6 +51,10 @@ public class MenuApplication extends Application {
         activeUser.setPassword(user.getPassword());
     }
 
+    public static String getUsername() {
+    	return activeUser.getUsername();
+    }
+    
     public static String getDifficulty() {
         return difficulty;
     }

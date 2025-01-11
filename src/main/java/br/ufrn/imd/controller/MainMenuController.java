@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -16,6 +17,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MainMenuController {
+	
+	@FXML
+	private TextField difficultyTextField;
+	
+	@FXML
+	private TextField usernameTextField;
+	
+	@FXML
+	public void initialize() {
+	    difficultyTextField.setText(MenuApplication.getDifficulty());
+	    usernameTextField.setText(MenuApplication.getUsername());
+	}
+
 
     @FXML
     private void onPlayButtonClick() {
