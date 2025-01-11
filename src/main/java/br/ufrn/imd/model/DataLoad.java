@@ -1,7 +1,6 @@
 package br.ufrn.imd.model;
 
 import br.ufrn.imd.dao.UsersList;
-import br.ufrn.imd.model.User;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

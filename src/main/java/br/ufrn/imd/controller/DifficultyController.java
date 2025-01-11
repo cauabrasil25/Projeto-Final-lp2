@@ -6,7 +6,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.stage.Stage;
 
 import java.util.Optional;
 
@@ -49,8 +48,7 @@ public class DifficultyController {
 
             MenuApplication.setDifficulty(difficulty);
 
-            Stage stage = (Stage) button.getScene().getWindow();
-            stage.close();
+            ScreenManager.switchScreen("/br/ufrn/imd/view/MainMenu.fxml", "Main Menu");
         }
     }
 }

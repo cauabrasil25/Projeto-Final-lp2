@@ -1,7 +1,12 @@
 package br.ufrn.imd.dao;
 
 public class UserException extends Exception {
-    public UserException(String message) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public UserException(String message) {
         super(message);
     }
 }

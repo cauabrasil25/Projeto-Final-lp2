@@ -5,15 +5,9 @@ import br.ufrn.imd.dao.UsersList;
 import br.ufrn.imd.model.User;
 import br.ufrn.imd.view.MenuApplication;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class LoginController {
 
@@ -23,7 +17,7 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
-    private UsersList usersList;
+    private UsersList usersList = MenuApplication.getUsersList();
     private boolean authenticated = false;
 
     public boolean isAuthenticated() {
@@ -34,7 +28,7 @@ public class LoginController {
         this.usersList = usersList;
     }
 
-    private User authenticated(String username, String password) throws UserException {
+    private User authenticate(String username, String password) throws UserException {
         return usersList.findUser(username, password);
     }
 
@@ -42,34 +36,35 @@ public class LoginController {
     private void handleLoginButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
+        
         try {
-            User user = authenticated(username, password);
-            System.out.println("User authenticated: " + user.getUsername());
-            for (User u : usersList.getUsers()) {
-                if (u.getUsername().equals(username)) {
-                    user.setMaxScore(u.getMaxScore());
-                    break;
-                }
-            }
+            User user = authenticate(username, password);
+            user.setMaxScore(usersList.getUsers().stream()
+                    .filter(u -> u.getUsername().equals(username))
+                    .findFirst()
+                    .map(User::getMaxScore)
+                    .orElse(0));
+
             MenuApplication.setActiveUser(user);
-
-            Stage stage = (Stage) usernameField.getScene().getWindow();
-            stage.close();
-
+            MenuApplication.setDifficulty(user.getDifficulty());
             this.authenticated = true;
+
+            // ✅ Troca de tela para o MainMenu usando o ScreenManager
+            ScreenManager.switchScreen("/br/ufrn/imd/view/MainMenu.fxml", "Main Menu");
+
         } catch (UserException e) {
-            System.out.println("User not authenticated: " + e.getMessage());
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Login");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Login Error");
             alert.setHeaderText(null);
-            if (e.getMessage().equals("User not found")) {
-                alert.setContentText("User not found, please register");
-            } else if (e.getMessage().equals("Incorrect password")) {
-                alert.setContentText("Incorrect password, please try again");
-            }
+            alert.setContentText(e.getMessage().equals("User not found") ? 
+                "User not found, please register." : 
+                "Incorrect password, please try again.");
             alert.showAndWait();
         }
-        System.out.println("Username: " + username + ", Password: " + password);
     }
 
+    @FXML
+    private void handleBackButtonAction() {
+        ScreenManager.switchScreen("/br/ufrn/imd/view/Welcome.fxml", "Welcome");
+    }
 }

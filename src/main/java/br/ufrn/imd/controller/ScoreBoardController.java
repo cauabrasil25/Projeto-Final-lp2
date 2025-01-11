@@ -12,7 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class ScoreBoardController {
 
-    private static UsersList usersList;
+    private UsersList usersList;
 
     @FXML
     private TableView<User> scoreTable;
@@ -38,5 +38,10 @@ public class ScoreBoardController {
 
     public void setUsersList(UsersList usersList) {
         this.usersList = usersList;
+    }
+    
+    @FXML
+    private void handleBackButtonAction() {
+        ScreenManager.switchScreen("/br/ufrn/imd/view/MainMenu.fxml", "Main Menu");
     }
 }

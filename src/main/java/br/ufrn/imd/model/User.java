@@ -8,11 +8,13 @@ public class User {
 
     private String username;
     private String password;
+    private String difficulty;
     private int maxScore;
 
     public User() {
         this.username = "";
         this.password = "";
+        this.difficulty = "Normal";
         this.maxScore = 0;
     }
 
@@ -30,6 +32,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public String getDifficulty() {
+    	return difficulty;
+    }
+    
+    public void setDifficulty(String difficulty) {
+    	this.difficulty = difficulty;
     }
 
     public String getUsername() {

@@ -2,9 +2,8 @@ package br.ufrn.imd.view;
 
 import br.ufrn.imd.model.User;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import br.ufrn.imd.controller.ScreenManager;
 import br.ufrn.imd.dao.UsersList;
 import br.ufrn.imd.model.DataLoad;
 import br.ufrn.imd.model.DataRead;
@@ -18,18 +17,17 @@ public class MenuApplication extends Application {
     private static User activeUser = new User();
     private static String difficulty;
 
-    @Override
+    @SuppressWarnings("exports")
+	@Override
     public void start(Stage stage) throws IOException {
         DataRead dataRead = new DataRead();
         dataRead.readJsonFile();
         DataLoad dataLoad = new DataLoad();
         usersList = dataLoad.loadJsonFile();
-
-        FXMLLoader fxmlLoader = new FXMLLoader(MenuApplication.class.getResource("Welcome.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        
+        ScreenManager.setPrimaryStage(stage);
         stage.setTitle("Welcome");
-        stage.setScene(scene);
-        stage.show();
+        ScreenManager.switchScreen("/br/ufrn/imd/view/Welcome.fxml", "Welcome");
     }
 
     @Override
@@ -49,6 +47,7 @@ public class MenuApplication extends Application {
         activeUser.setMaxScore(user.getMaxScore());
         activeUser.setUsername(user.getUsername());
         activeUser.setPassword(user.getPassword());
+        activeUser.setPassword(user.getDifficulty());
     }
 
     public static String getUsername() {
@@ -61,6 +60,8 @@ public class MenuApplication extends Application {
 
     public static void setDifficulty(String difficulty) {
         MenuApplication.difficulty = difficulty;
+        activeUser.setDifficulty(difficulty);
+        usersList.updateUser(activeUser);
     }
     
     public static void saveUsers() {

@@ -31,6 +31,7 @@ public class UsersList {
                 if (u.getPassword().equals(userPassword)){
                     user.setUsername(u.getUsername());
                     user.setPassword(u.getPassword());
+                    user.setDifficulty(u.getDifficulty());
                     user.setMaxScore(u.getMaxScore());
                     return user;
                 }
@@ -44,6 +45,7 @@ public class UsersList {
         for (User u : users) {
             if (u.getUsername().equals(user.getUsername())) {
                 u.setMaxScore(user.getMaxScore());
+                u.setDifficulty(user.getDifficulty());
                 break;
             }
         }
