@@ -16,7 +16,7 @@ public class UsersList {
         return users;
     }
 
-    public void setUsers(ArrayList<User> users) {
+    public void setUsersList(ArrayList<User> users) {
         this.users = users;
     }
 
@@ -39,4 +39,18 @@ public class UsersList {
         }
         throw new UserException("User not found");
     }
+
+    public void updateUser(User user) {
+        for (User u : users) {
+            if (u.getUsername().equals(user.getUsername())) {
+                u.setMaxScore(user.getMaxScore());
+                break;
+            }
+        }
+    }
+
+    public void userOrdering() {
+        users.sort((u1, u2) -> u2.getMaxScore() - u1.getMaxScore());
+    }
+
 }

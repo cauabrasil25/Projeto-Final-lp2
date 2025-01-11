@@ -9,7 +9,7 @@
     <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
     <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
     <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-    <Button onAction="#handleLoginButtonAction" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Button onAction="#handleRegisterButtonAction" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="2" />
     <padding><Insets bottom="10" left="10" right="10" top="10" /></padding>
    <columnConstraints>
       <ColumnConstraints />

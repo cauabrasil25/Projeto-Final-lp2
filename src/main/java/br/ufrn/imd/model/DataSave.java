@@ -12,11 +12,9 @@ public class DataSave extends Data {
     public void saveJsonFile(UsersList usersList) {
         File file = new File(jsonFile);
         try (FileWriter fileWriter = new FileWriter(file)) {
-            // Clear the file content
             fileWriter.write("");
             fileWriter.flush();
 
-            // Write users to the file
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.writeValue(file, usersList.getUsers());
             System.out.println("Users saved successfully to file: " + file.getPath());

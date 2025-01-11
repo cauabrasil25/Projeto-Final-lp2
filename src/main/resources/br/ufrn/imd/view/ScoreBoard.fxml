@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="br.ufrn.imd.controller.ScoreBoardController"
+            prefHeight="400.0" prefWidth="600.0">
+    <TableView fx:id="scoreTable" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="nameColumn" text="Name" prefWidth="300"/>
+            <TableColumn fx:id="scoreColumn" text="Score" prefWidth="300"/>
+        </columns>
+    </TableView>
+</VBox>

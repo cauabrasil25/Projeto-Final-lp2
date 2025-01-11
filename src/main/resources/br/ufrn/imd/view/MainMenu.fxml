@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="br.ufrn.imd.controller.MainMenu"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controller.MainMenuController">
+   <SplitPane prefHeight="400.0" prefWidth="200.0">
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <Button text="Play" onAction="#onPlayButtonClick" />
+         <Button text="Difficulty" onAction="#onDifficultyButtonClick" />
+         <Button text="Scoreboard" onAction="#onScoreboardButtonClick" />
+         <Button text="Exit" onAction="#onExitButtonClick" />
+      </VBox>
+   </SplitPane>
 </AnchorPane>

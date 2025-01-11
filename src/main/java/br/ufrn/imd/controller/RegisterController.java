@@ -28,7 +28,7 @@ public class RegisterController {
     }
 
     @FXML
-    private void handleLoginButtonAction() {
+    private void handleRegisterButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
         try {
@@ -43,7 +43,6 @@ public class RegisterController {
                 user.setUsername(username);
                 user.setPassword(password);
                 usersList.addUser(user);
-                MenuApplication.getUsersList().addUser(user);
                 alert.setContentText("User registered, please login");
             } else if (e.getMessage().equals("Incorrect password")) {
                 alert.setContentText("User already registered");
