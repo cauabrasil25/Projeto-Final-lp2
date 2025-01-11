@@ -24,7 +24,17 @@ public class MainMenuController {
 
     @FXML
     private void onDifficultyButtonClick() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/br/ufrn/imd/view/Difficulty.fxml"));
+            Parent root = fxmlLoader.load();
 
+            Stage stage = new Stage();
+            stage.setTitle("Difficulty");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            Logger.getLogger(MainMenuController.class.getName()).log(Level.SEVERE, "Error loading Difficulty.fxml", e);
+        }
     }
 
     @FXML

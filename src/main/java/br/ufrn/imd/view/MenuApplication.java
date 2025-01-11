@@ -16,6 +16,7 @@ public class MenuApplication extends Application {
 
     private static UsersList usersList = new UsersList();
     private static User activeUser = new User();
+    private static String difficulty;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -50,4 +51,13 @@ public class MenuApplication extends Application {
         activeUser.setUsername(user.getUsername());
         activeUser.setPassword(user.getPassword());
     }
+
+    public static String getDifficulty() {
+        return difficulty;
+    }
+
+    public static void setDifficulty(String difficulty) {
+        MenuApplication.difficulty = difficulty;
+    }
+
 }
