@@ -3,7 +3,6 @@ package br.ufrn.imd.controller;
 import br.ufrn.imd.dao.UserException;
 import br.ufrn.imd.dao.UsersList;
 import br.ufrn.imd.model.User;
-import br.ufrn.imd.view.MenuApplication;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
@@ -36,6 +35,7 @@ public class RegisterController {
             System.out.println("User already registered" + user.getUsername());
         } catch (UserException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            System.out.println("User not found");
             alert.setTitle("Login");
             alert.setHeaderText(null);
             if (e.getMessage().equals("User not found")) {
@@ -44,6 +44,7 @@ public class RegisterController {
                 user.setPassword(password);
                 usersList.addUser(user);
                 alert.setContentText("User registered, please login");
+                usernameField.getScene().getWindow().hide();
             } else if (e.getMessage().equals("Incorrect password")) {
                 alert.setContentText("User already registered");
             }

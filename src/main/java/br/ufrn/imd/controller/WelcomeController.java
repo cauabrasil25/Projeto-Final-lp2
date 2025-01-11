@@ -32,7 +32,23 @@ public class WelcomeController {
             Stage stage = new Stage();
             stage.setTitle("Login");
             stage.setScene(new Scene(root));
-            stage.show();
+            stage.showAndWait();
+
+            if (loginController.isAuthenticated()) {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setContentText("User logged in successfully");
+                alert.showAndWait();
+
+                Stage welcomeStage = (Stage) root.getScene().getWindow();
+                welcomeStage.close();
+
+                FXMLLoader mainMenuLoader = new FXMLLoader(getClass().getResource("/br/ufrn/imd/view/MainMenu.fxml"));
+                Parent mainMenuRoot = mainMenuLoader.load();
+                Stage mainMenuStage = new Stage();
+                mainMenuStage.setTitle("Main Menu");
+                mainMenuStage.setScene(new Scene(mainMenuRoot));
+                mainMenuStage.show();
+            }
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Error loading Login.fxml", e);
         }

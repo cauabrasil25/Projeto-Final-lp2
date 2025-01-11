@@ -24,6 +24,11 @@ public class LoginController {
     private PasswordField passwordField;
 
     private UsersList usersList;
+    private boolean authenticated = false;
+
+    public boolean isAuthenticated() {
+        return authenticated;
+    }
 
     public void setUsersList(UsersList usersList) {
         this.usersList = usersList;
@@ -51,12 +56,7 @@ public class LoginController {
             Stage stage = (Stage) usernameField.getScene().getWindow();
             stage.close();
 
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/br/ufrn/imd/view/MainMenu.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage mainMenuStage = new Stage();
-            mainMenuStage.setTitle("Main Menu");
-            mainMenuStage.setScene(new Scene(root));
-            mainMenuStage.show();
+            this.authenticated = true;
         } catch (UserException e) {
             System.out.println("User not authenticated: " + e.getMessage());
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -68,8 +68,6 @@ public class LoginController {
                 alert.setContentText("Incorrect password, please try again");
             }
             alert.showAndWait();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
         System.out.println("Username: " + username + ", Password: " + password);
     }
