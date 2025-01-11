@@ -34,8 +34,7 @@ public class MenuApplication extends Application {
 
     @Override
     public void stop() {
-        DataSave dataSave = new DataSave();
-        dataSave.saveJsonFile(usersList);
+        saveUsers();
     }
 
     public static void main(String[] args) {
@@ -58,6 +57,11 @@ public class MenuApplication extends Application {
 
     public static void setDifficulty(String difficulty) {
         MenuApplication.difficulty = difficulty;
+    }
+    
+    public static void saveUsers() {
+    	DataSave dataSave = new DataSave();
+        dataSave.saveJsonFile(usersList);
     }
 
 }

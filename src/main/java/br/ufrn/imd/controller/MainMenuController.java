@@ -63,6 +63,7 @@ public class MainMenuController {
         alert.setContentText("Do you really want to exit?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
+            MenuApplication.saveUsers();
             System.exit(0);
         }
     }

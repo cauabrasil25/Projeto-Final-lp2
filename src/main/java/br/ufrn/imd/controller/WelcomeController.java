@@ -1,6 +1,5 @@
 package br.ufrn.imd.controller;
 
-import br.ufrn.imd.model.DataSave;
 import br.ufrn.imd.view.MenuApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -81,8 +80,7 @@ public class WelcomeController {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            DataSave dataSave = new DataSave();
-            dataSave.saveJsonFile(MenuApplication.getUsersList());
+        	MenuApplication.saveUsers();
             System.exit(0);
         }
     }
