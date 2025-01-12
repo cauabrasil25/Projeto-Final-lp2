@@ -7,18 +7,18 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controller.ScoreBoardController">
+<BorderPane prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controller.ScoreBoardController">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="415.0" prefWidth="600.0">
           <TableView fx:id="scoreTable" prefWidth="600">
               <columns>
-                  <TableColumn fx:id="nameColumn" prefWidth="640.0" text="Name" />
-                  <TableColumn fx:id="scoreColumn" prefWidth="640.0" text="Score" />
+                  <TableColumn fx:id="nameColumn" prefWidth="427.0" text="Name" />
+                  <TableColumn fx:id="scoreColumn" prefWidth="427.0" text="Score" />
               </columns>
           </TableView>
          <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back">
             <VBox.margin>
-               <Insets top="50.0" />
+               <Insets top="30.0" />
             </VBox.margin></Button>
       </VBox>
    </center>
