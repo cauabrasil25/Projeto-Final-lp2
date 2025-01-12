@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controller.ScoreBoardController">
+<BorderPane prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controller.ScoreBoardController">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="415.0" prefWidth="600.0">
           <TableView fx:id="scoreTable" prefWidth="600">
