@@ -76,16 +76,17 @@ public class GameController {
         // Inicializar o tempo
         timeRemaining = initialTime;
         updateTime();
+        
+        // Criar botões aleatórios
+        Timeline buttonTimeline = new Timeline(new KeyFrame(Duration.seconds(secsToSpawn), e -> spawnRandomButton()));
+        buttonTimeline.setCycleCount(Timeline.INDEFINITE);
+        buttonTimeline.play();
 
         // Configurar a contagem regressiva de 1min30s (90 segundos)
         Timeline gameTimer = new Timeline(new KeyFrame(Duration.seconds(1), e -> updateTime()));
         gameTimer.setCycleCount(Timeline.INDEFINITE);
         gameTimer.play();
 
-        // Criar botões aleatórios
-        Timeline buttonTimeline = new Timeline(new KeyFrame(Duration.seconds(secsToSpawn), e -> spawnRandomButton()));
-        buttonTimeline.setCycleCount(Timeline.INDEFINITE);
-        buttonTimeline.play();
     }
 
     private void spawnRandomButton() {
