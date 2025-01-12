@@ -40,7 +40,7 @@ public class GameController {
     private boolean gameRunning = true;
     private int clickValue;
     private double secsToSpawn;
-    private int initialTime = 20; // Tempo inicial de 90 segundos
+    private int initialTime = 90; // Tempo inicial de 90 segundos
     private int timeRemaining;
 
     @FXML
