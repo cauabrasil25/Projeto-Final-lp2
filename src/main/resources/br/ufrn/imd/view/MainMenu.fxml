@@ -35,6 +35,7 @@
                      <Button onAction="#onPlayButtonClick" text="Play" />
                      <Button onAction="#onDifficultyButtonClick" text="Difficulty" />
                      <Button onAction="#onScoreboardButtonClick" text="Scoreboard" />
+                     <Button onAction="#onAboutButtonClick" text="About" />
                      <Button onAction="#onExitButtonClick" text="Exit" />
                   </children>
                </VBox>

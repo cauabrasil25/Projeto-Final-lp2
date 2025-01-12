@@ -38,6 +38,11 @@ public class MainMenuController {
     private void onScoreboardButtonClick() {
     	ScreenManager.switchScreen("/br/ufrn/imd/view/ScoreBoard.fxml", "ScoreBoard");
     }
+    
+    @FXML
+    private void onAboutButtonClick() {
+    	ScreenManager.switchScreen("/br/ufrn/imd/view/About.fxml", "About");
+    }
 
     @FXML
     private void onExitButtonClick() {
