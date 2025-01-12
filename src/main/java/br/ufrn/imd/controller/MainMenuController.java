@@ -26,7 +26,7 @@ public class MainMenuController {
 
     @FXML
     private void onPlayButtonClick() {
-
+    	ScreenManager.switchScreen("/br/ufrn/imd/view/Game.fxml", "Game");
     }
 
     @FXML

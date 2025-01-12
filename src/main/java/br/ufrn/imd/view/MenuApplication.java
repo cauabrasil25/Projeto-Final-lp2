@@ -68,5 +68,12 @@ public class MenuApplication extends Application {
     	DataSave dataSave = new DataSave();
         dataSave.saveJsonFile(usersList);
     }
+    
+    public static void updateScore(int score) {
+    	if(score > activeUser.getMaxScore()) {
+    		activeUser.setMaxScore(score);
+    		usersList.updateUser(activeUser);
+    	}
+    }
 
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controller.GameController">
+   <center>
+      <AnchorPane fx:id="buttonContainer" prefHeight="480.0" prefWidth="854.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="scoreLabel" layoutX="20.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scoreboard: 0" textAlignment="CENTER" textOrigin="CENTER" />
+            <Text fx:id="timeLabel" layoutX="314.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remaining Time: 90s" textAlignment="CENTER" textOrigin="CENTER">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font></Text>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
