@@ -24,14 +24,33 @@ public class GameController {
     @FXML
     private Text timeLabel;
     
+    //Final do jogo
+    @FXML
+    private Button buttonMainMenu;
+    @FXML
+    private Button buttonTryAgain;
+    @FXML
+    private Text labelFinalScore;
+    @FXML
+    private Text textFinalScore;
+    @FXML
+    private Text textCongratulations;
+    
     private int clicks = 0;
     private boolean gameRunning = true;
     private int clickValue;
     private double secsToSpawn;
-    private int timeRemaining = 20; // Tempo inicial de 90 segundos
+    private int initialTime = 20; // Tempo inicial de 90 segundos
+    private int timeRemaining;
 
     @FXML
     public void initialize() {
+    	buttonMainMenu.setVisible(false);
+        buttonTryAgain.setVisible(false);
+        labelFinalScore.setVisible(false);
+        textFinalScore.setVisible(false);
+        textCongratulations.setVisible(false);
+        
     	switch(MenuApplication.getDifficulty()) {
     	case "Easy":
     		clickValue = 1;
@@ -53,6 +72,10 @@ public class GameController {
         // Inicializar o placar
     	clicks = 0;
         updateScore();
+        
+        // Inicializar o tempo
+        timeRemaining = initialTime;
+        updateTime();
 
         // Configurar a contagem regressiva de 1min30s (90 segundos)
         Timeline gameTimer = new Timeline(new KeyFrame(Duration.seconds(1), e -> updateTime()));
@@ -106,8 +129,26 @@ public class GameController {
 
     private void endGame() {
         gameRunning = false;
-        timeLabel.setText("Time's Up!");
-        scoreLabel.setText("Game Over! Final Score: " + clicks*clickValue);
+        timeLabel.setVisible(false);
+        scoreLabel.setVisible(false);
+        
+        buttonMainMenu.setVisible(true);
+        buttonTryAgain.setVisible(true);
+        labelFinalScore.setVisible(true);
+        textFinalScore.setVisible(true);
+        textCongratulations.setVisible(true);
+        
+        labelFinalScore.setText(""+ clicks*clickValue);
         MenuApplication.updateScore(clicks*clickValue);
+    }
+    
+    @FXML
+    private void handleTryAgainAction() {
+        ScreenManager.switchScreen("/br/ufrn/imd/view/Game.fxml", "Game");
+    }
+    
+    @FXML
+    private void handleMainMenuAction() {
+    	ScreenManager.switchScreen("/br/ufrn/imd/view/MainMenu.fxml", "Main Menu");
     }
 }
