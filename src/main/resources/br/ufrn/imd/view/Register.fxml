@@ -5,25 +5,32 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controller.RegisterController">
-    <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-    <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-    <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-    <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-    <Button onAction="#handleRegisterButtonAction" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-   <Button onAction="#handleBackButtonAction" text="Back" GridPane.rowIndex="2" />
-    <padding><Insets bottom="10" left="10" right="10" top="10" /></padding>
-   <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
-      <RowConstraints />
-   </rowConstraints>
-</GridPane>
+<BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controller.RegisterController">
+   <center>
+      <GridPane alignment="CENTER">
+          <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+          <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+          <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+          <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+          <Button onAction="#handleRegisterButtonAction" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <Button onAction="#handleBackButtonAction" text="Back" GridPane.rowIndex="2" />
+          <padding>
+            <Insets bottom="10" left="10" right="10" top="10" />
+         </padding>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+      </GridPane>
+   </center>
+</BorderPane>

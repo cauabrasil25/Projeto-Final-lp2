@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controller.ScoreBoardController">
-    <TableView fx:id="scoreTable" prefWidth="600">
-        <columns>
-            <TableColumn fx:id="nameColumn" prefWidth="300" text="Name" />
-            <TableColumn fx:id="scoreColumn" prefWidth="300" text="Score" />
-        </columns>
-    </TableView>
-   <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back" />
-</VBox>
+<BorderPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controller.ScoreBoardController">
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="415.0" prefWidth="600.0">
+          <TableView fx:id="scoreTable" prefWidth="600">
+              <columns>
+                  <TableColumn fx:id="nameColumn" prefWidth="640.0" text="Name" />
+                  <TableColumn fx:id="scoreColumn" prefWidth="640.0" text="Score" />
+              </columns>
+          </TableView>
+         <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleBackButtonAction" text="Back">
+            <VBox.margin>
+               <Insets top="50.0" />
+            </VBox.margin></Button>
+      </VBox>
+   </center>
+</BorderPane>
