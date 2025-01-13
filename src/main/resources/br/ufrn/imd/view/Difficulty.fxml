@@ -18,9 +18,9 @@
                <Insets bottom="50.0" top="20.0" />
             </VBox.margin>
          </Text>
-           <Button fx:id="easyButton" onAction="#onEasyButtonClick" text="Easy" />
-           <Button fx:id="normalButton" onAction="#onNormalButtonClick" text="Normal" />
-           <Button fx:id="hardButton" onAction="#onHardButtonClick" text="Hard" />
+           <Button fx:id="easyButton" onAction="#onEasyButtonClick" prefWidth="64.8" text="Easy" />
+           <Button fx:id="normalButton" onAction="#onNormalButtonClick" prefWidth="64.8" text="Normal" />
+           <Button fx:id="hardButton" onAction="#onHardButtonClick" prefWidth="64.8" text="Hard" />
        </VBox>
    </center>
 </BorderPane>

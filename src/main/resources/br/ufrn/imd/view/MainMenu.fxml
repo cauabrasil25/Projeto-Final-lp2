@@ -21,22 +21,22 @@
                            <Insets top="20.0" />
                         </VBox.margin>
                      </Text>
-                     <TextField fx:id="difficultyTextField" alignment="CENTER" editable="false" text="Difficulty">
+                     <TextField fx:id="difficultyTextField" alignment="CENTER" disable="true" editable="false" text="Difficulty">
                         <VBox.margin>
                            <Insets left="230.0" right="230.0" />
                         </VBox.margin>
                      </TextField>
                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User Logged:" textAlignment="CENTER" />
-                     <TextField fx:id="usernameTextField" alignment="CENTER" editable="false" text="Username">
+                     <TextField fx:id="usernameTextField" alignment="CENTER" disable="true" editable="false" text="Username">
                         <VBox.margin>
                            <Insets bottom="20.0" left="230.0" right="230.0" />
                         </VBox.margin>
                      </TextField>
-                     <Button onAction="#onPlayButtonClick" text="Play" />
-                     <Button onAction="#onDifficultyButtonClick" text="Difficulty" />
-                     <Button onAction="#onScoreboardButtonClick" text="Scoreboard" />
-                     <Button onAction="#onAboutButtonClick" text="About" />
-                     <Button onAction="#onExitButtonClick" text="Exit" />
+                     <Button onAction="#onPlayButtonClick" prefWidth="80.0" text="Play" />
+                     <Button onAction="#onDifficultyButtonClick" prefWidth="80.0" text="Difficulty" />
+                     <Button onAction="#onScoreboardButtonClick" prefWidth="80.0" text="Scoreboard" />
+                     <Button onAction="#onAboutButtonClick" prefWidth="80.0" text="About" />
+                     <Button onAction="#onExitButtonClick" prefWidth="80.0" text="Exit" />
                   </children>
                </VBox>
             </children>

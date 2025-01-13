@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/17.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrn.imd.controller.LoginController">
    <center>
-      <GridPane alignment="CENTER" prefHeight="720.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
-          <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-          <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-          <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-          <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-          <Button alignment="CENTER" onAction="#handleLoginButtonAction" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         <Button alignment="CENTER" onAction="#handleBackButtonAction" text="Back" GridPane.rowIndex="2" />
-          <padding>
-            <Insets bottom="10" left="10" right="10" top="10" />
-         </padding>
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="40.00000915527344" minHeight="24.000001525878908" prefHeight="24.000001525878908" />
-            <RowConstraints maxHeight="27.199998474121095" minHeight="11.199990844726564" prefHeight="27.199998474121095" />
-            <RowConstraints />
-         </rowConstraints>
-      </GridPane>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="514.0" prefWidth="854.0">
+               <children>
+                  <Text layoutX="368.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="38.0" />
+                     </font>
+                  </Text>
+                   <Label layoutX="323.0" layoutY="226.0" text="Username:" />
+                   <TextField fx:id="usernameField" layoutX="383.0" layoutY="222.0" />
+                   <Label layoutX="323.0" layoutY="267.0" text="Password:" />
+                   <PasswordField fx:id="passwordField" layoutX="383.0" layoutY="263.0" />
+                   <Button alignment="CENTER" layoutX="438.0" layoutY="313.0" onAction="#handleLoginButtonAction" prefWidth="64.8" text="Login" />
+                  <Button alignment="CENTER" layoutX="356.0" layoutY="313.0" onAction="#handleBackButtonAction" prefWidth="64.8" text="Back" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
    </center>
 </BorderPane>
