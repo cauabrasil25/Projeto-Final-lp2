@@ -24,7 +24,7 @@ public class GameController {
     @FXML
     private Text timeLabel;
     
-    //Final do jogo
+    
     @FXML
     private Button buttonMainMenu;
     @FXML
@@ -40,7 +40,7 @@ public class GameController {
     private boolean gameRunning = true;
     private int clickValue;
     private double secsToSpawn;
-    private int initialTime = 90; // Tempo inicial de 90 segundos
+    private int initialTime = 60;
     private int timeRemaining;
 
     @FXML
@@ -82,7 +82,7 @@ public class GameController {
         buttonTimeline.setCycleCount(Timeline.INDEFINITE);
         buttonTimeline.play();
 
-        // Configurar a contagem regressiva de 1min30s (90 segundos)
+        // Configurar a contagem regressiva de 1min
         Timeline gameTimer = new Timeline(new KeyFrame(Duration.seconds(1), e -> updateTime()));
         gameTimer.setCycleCount(Timeline.INDEFINITE);
         gameTimer.play();
@@ -107,12 +107,16 @@ public class GameController {
         // Adiciona o botão ao contêiner
         buttonContainer.getChildren().add(button);
 
-        // O botão desaparece após 1 segundo
-        Timeline disappearance = new Timeline(new KeyFrame(Duration.seconds(secsToSpawn), ev -> {
-            buttonContainer.getChildren().remove(button);
-        }));
-        disappearance.setCycleCount(1);
-        disappearance.play();
+        // Definir tempo para o botão desaparecer
+        if(secsToSpawn+1 >= timeRemaining) {        	
+        	buttonContainer.getChildren().remove(button);
+        } else {        	
+        	Timeline disappearance = new Timeline(new KeyFrame(Duration.seconds(secsToSpawn), ev -> {
+        		buttonContainer.getChildren().remove(button);
+        	}));
+        	disappearance.setCycleCount(1);
+        	disappearance.play();
+        }
     }
 
     private void updateScore() {
