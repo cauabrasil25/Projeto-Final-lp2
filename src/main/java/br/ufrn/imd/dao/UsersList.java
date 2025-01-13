@@ -24,21 +24,30 @@ public class UsersList {
         users.add(u);
     }
 
-    public User findUser(String userName, String userPassword) throws UserException {
-        User user = new User();
+    public User findUserByUsername(String userName) throws UserException {
         for (User u : users){
             if (u.getUsername().equals(userName)){
-                if (u.getPassword().equals(userPassword)){
-                    user.setUsername(u.getUsername());
-                    user.setPassword(u.getPassword());
-                    user.setDifficulty(u.getDifficulty());
-                    user.setMaxScore(u.getMaxScore());
-                    return user;
-                }
-                throw new UserException("Incorrect password");
+                return u;
             }
         }
         throw new UserException("User not found");
+    }
+    
+    public User findUser(String userName, String userPassword) throws UserException {
+    	User user = new User();
+    	for (User u : users){
+    		if (u.getUsername().equals(userName)){
+    			if (u.getPassword().equals(userPassword)){
+    				user.setUsername(u.getUsername());
+    				user.setPassword(u.getPassword());
+    				user.setDifficulty(u.getDifficulty());
+    				user.setMaxScore(u.getMaxScore());
+    				return user;
+    			}
+    			throw new UserException("Incorrect password");
+    		}
+    	}
+    	throw new UserException("User not found");
     }
 
     public void updateUser(User user) {

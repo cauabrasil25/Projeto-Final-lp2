@@ -30,10 +30,10 @@ public class RegisterController {
 
         try {
             // Verifica se o usuário já existe
-            usersList.findUser(username, password);
+            usersList.findUserByUsername(username);
 
             // Se o usuário já existir, ele lançará uma exceção
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Registration");
             alert.setHeaderText(null);
             alert.setContentText("User already registered. Please login.");
