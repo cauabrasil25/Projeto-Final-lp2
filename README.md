@@ -23,6 +23,11 @@ Este é o projeto final da disciplina de Linguagem de Programação II, escolhid
 - `src/main/resources`: Arquivos de configuração e recursos utilizados
 - `README.md`: Documentação do projeto
 
+## Requisitos
+- java 17
+- jfx 17
+- maven
+
 ## Como Executar o Projeto
 1. Clone o repositório:
    ```bash
