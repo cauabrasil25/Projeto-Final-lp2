@@ -20,6 +20,7 @@ Este é o projeto final da disciplina de Linguagem de Programação II, escolhid
 ## Estrutura do Projeto
 - `src/main/java`: Código fonte do projeto
 - `docs` : Documentos relacionados ao projeto
+- `doc` : JavaDoc
 - `src/main/resources`: Arquivos de configuração e recursos utilizados
 - `README.md`: Documentação do projeto
 
