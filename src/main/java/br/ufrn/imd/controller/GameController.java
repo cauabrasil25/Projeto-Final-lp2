@@ -12,8 +12,11 @@ import java.util.Random;
 
 import br.ufrn.imd.view.MenuApplication;
 
+/**
+ * Controlador para o jogo.
+ * Este controlador gerencia a logica do jogo, incluindo a pontuacao e o tempo.
+ */
 public class GameController {
-
 
     @FXML
     private AnchorPane buttonContainer;
@@ -23,7 +26,6 @@ public class GameController {
     
     @FXML
     private Text timeLabel;
-    
     
     @FXML
     private Button buttonMainMenu;
@@ -43,6 +45,9 @@ public class GameController {
     private int initialTime = 60;
     private int timeRemaining;
 
+    /**
+     * Inicializa o jogo com a dificuldade selecionada e configura o tempo e a pontuacao.
+     */
     @FXML
     public void initialize() {
     	buttonMainMenu.setVisible(false);
@@ -51,6 +56,7 @@ public class GameController {
         textFinalScore.setVisible(false);
         textCongratulations.setVisible(false);
         
+    	// Define o valor do clique e o tempo entre o aparecimento dos botões conforme a dificuldade
     	switch(MenuApplication.getDifficulty()) {
     	case "Easy":
     		clickValue = 1;
@@ -68,6 +74,9 @@ public class GameController {
         startGame();
     }
 
+    /**
+     * Inicia o jogo, incluindo o cronometro e o spawn dos botões.
+     */
     private void startGame() {
         // Inicializar o placar
     	clicks = 0;
@@ -89,6 +98,10 @@ public class GameController {
 
     }
 
+    /**
+     * Cria um botão aleatório na tela.
+     * O botão aparece em uma posição aleatória e, ao ser clicado, aumenta a pontuacao.
+     */
     private void spawnRandomButton() {
         if (!gameRunning) return;
 
@@ -119,10 +132,17 @@ public class GameController {
         }
     }
 
+    /**
+     * Atualiza o placar exibido na tela.
+     */
     private void updateScore() {
         scoreLabel.setText("Scoreboard: " + clicks*clickValue);
     }
     
+    /**
+     * Atualiza o tempo restante no jogo.
+     * Quando o tempo acaba, o jogo é finalizado.
+     */
     private void updateTime() {
         if (gameRunning && timeRemaining > 0) {
             timeRemaining--;
@@ -132,6 +152,9 @@ public class GameController {
         }
     }
 
+    /**
+     * Finaliza o jogo, exibindo a pontuacao final e botões para tentar novamente ou voltar ao menu principal.
+     */
     private void endGame() {
         gameRunning = false;
         timeLabel.setVisible(false);
@@ -147,11 +170,19 @@ public class GameController {
         MenuApplication.updateScore(clicks*clickValue);
     }
     
+    /**
+     * Lida com a acao do botao 'Try Again'.
+     * Reinicia o jogo.
+     */
     @FXML
     private void handleTryAgainAction() {
         ScreenManager.switchScreen("/br/ufrn/imd/view/Game.fxml", "Game");
     }
     
+    /**
+     * Lida com a acao do botao 'Main Menu'.
+     * Volta para o menu principal.
+     */
     @FXML
     private void handleMainMenuAction() {
     	ScreenManager.switchScreen("/br/ufrn/imd/view/MainMenu.fxml", "Main Menu");

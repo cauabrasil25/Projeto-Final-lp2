@@ -9,6 +9,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+/**
+ * Controlador para a tela de cadastro de usuario.
+ * Este controlador gerencia o processo de registro de novos usuarios.
+ */
 public class RegisterController {
 
     @FXML
@@ -19,48 +23,64 @@ public class RegisterController {
 
     private UsersList usersList = MenuApplication.getUsersList();
 
+    /**
+     * Define a lista de usuarios a ser utilizada.
+     * 
+     * @param usersList A lista de usuarios a ser utilizada.
+     */
     public void setUsersList(UsersList usersList) {
         this.usersList = usersList;
     }
 
+    /**
+     * Lida com a acao do botao de registro.
+     * Registra um novo usuario se o nome de usuario nao existir.
+     * Exibe um alerta se o usuario ja estiver cadastrado.
+     */
     @FXML
     private void handleRegisterButtonAction() {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
         try {
-            // Verifica se o usuário já existe
+            // Verifica se o usuario ja existe
             usersList.findUserByUsername(username);
 
-            // Se o usuário já existir, ele lançará uma exceção
+            // Se o usuario ja existir, exibe um alerta
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Registration");
             alert.setHeaderText(null);
             alert.setContentText("User already registered. Please login.");
             alert.showAndWait();
             
+            // Redireciona para a tela de login
             ScreenManager.switchScreen("/br/ufrn/imd/view/Login.fxml", "Login");
         } catch (UserException e) {
-            // Se o usuário não existir, cria o novo usuário
+            // Se o usuario nao existir, cria o novo usuario
             User user = new User();
             user.setUsername(username);
             user.setPassword(password);
 
-            // Adiciona o novo usuário à lista
+            // Adiciona o novo usuario a lista
             usersList.addUser(user);
 
-            // Alerta de sucesso
+            // Exibe alerta de sucesso
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Registration");
             alert.setHeaderText(null);
             alert.setContentText("User registered successfully. Please login.");
             alert.showAndWait();
             
+            // Redireciona para a tela de login
             ScreenManager.switchScreen("/br/ufrn/imd/view/Login.fxml", "Login");
         }
         System.out.println("Username: " + username + ", Password: " + password);
     }
-    
+
+    /**
+     * Lida com a acao do botao de voltar.
+     * Retorna para a tela de boas-vindas.
+     */
     @FXML
     private void handleBackButtonAction() {
         ScreenManager.switchScreen("/br/ufrn/imd/view/Welcome.fxml", "Welcome");
