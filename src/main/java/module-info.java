@@ -3,6 +3,7 @@ module br.ufrn.imd.projeto_final {
     requires javafx.fxml;
     requires com.fasterxml.jackson.databind;
     requires java.logging;
+    requires javafx.graphics;
 
 
     opens br.ufrn.imd.view to javafx.fxml;
